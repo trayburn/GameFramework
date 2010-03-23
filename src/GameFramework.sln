@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFramework", "GameFramework\GameFramework.csproj", "{642153C4-B537-44FA-9752-398A87283D6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFramework.Test", "GameFramework.Test\GameFramework.Test.csproj", "{45684FB6-8094-4F6D-8915-50A8E6584606}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{642153C4-B537-44FA-9752-398A87283D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642153C4-B537-44FA-9752-398A87283D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642153C4-B537-44FA-9752-398A87283D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642153C4-B537-44FA-9752-398A87283D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45684FB6-8094-4F6D-8915-50A8E6584606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45684FB6-8094-4F6D-8915-50A8E6584606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45684FB6-8094-4F6D-8915-50A8E6584606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45684FB6-8094-4F6D-8915-50A8E6584606}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
