@@ -13,5 +13,15 @@ namespace GameFramework.Test.Framework
         {
             Assert.IsInstanceOf<T>(self);
         }
+
+        public static void ShouldBe(this object actual, object expected)
+        {
+            Assert.AreEqual(expected, actual);
+        }
+
+        public static void ShouldBeTrue(this bool self)
+        {
+            Assert.IsTrue(self);
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using GameFramework.Test.Framework;
+using Rhino.Mocks;
 
 namespace GameFramework.Test
 {

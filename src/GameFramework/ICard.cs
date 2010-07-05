@@ -8,7 +8,7 @@ namespace GameFramework
     public interface ICard : IComparable<ICard>
     {
         string Name { get; }
-        string SuitName { get; }
-        string ValueName { get; }
+        string Suit { get; }
+        string Value { get; }
     }
 }
