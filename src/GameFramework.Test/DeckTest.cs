@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace GameFramework.Test
 {
     [TestFixture]
-    public class DeckTest
+    public class DeckTest : NUnitBaseTest
     {
     }
 }
