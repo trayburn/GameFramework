@@ -45,6 +45,7 @@
     <Compile Include="Deck.cs" />
     <Compile Include="ICard.cs" />
     <Compile Include="IGame.cs" />
+    <Compile Include="IValidate.cs" />
     <Compile Include="PokerGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameFramework
 {
-    public interface ICard : IComparable<ICard>
+    public interface ICard : IComparable<ICard>, IValidate
     {
         string Name { get; }
         string Suit { get; }

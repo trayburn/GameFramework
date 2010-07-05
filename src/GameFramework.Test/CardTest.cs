@@ -19,8 +19,8 @@ namespace GameFramework.Test
             base.BeforeEachTest();
             game = Mock<IGame>();
             card = new Card(game);
-            game.Stub(g => g.Suits).Return(new string[] { "Clubs", "Hearts" });
-            game.Stub(g => g.Values).Return(new string[] { "1", "2", "3", "4", "5" });
+            game.Stub(g => g.Suits).Return(new string[] { "Clubs", "Hearts", "Joker" });
+            game.Stub(g => g.Values).Return(new string[] { "1", "2", "3", "4", "5", "Black" });
         }
 
         [Test]
@@ -61,6 +61,20 @@ namespace GameFramework.Test
             card1.CompareTo(card2).ShouldBe(0);
 
             game.AssertWasCalled(g => g.Compare(card1, card2), mo => mo.IgnoreArguments());
+        }
+
+        [Test]
+        public void ShouldBeAbleToCheckValidity()
+        {
+            card.Suit = "Clubs";
+            card.Value = "5";
+            card.Validate().ShouldBeTrue();
+        }
+
+        [Test]
+        public void ShouldImplementIValidate()
+        {
+            card.ShouldBeOfType<IValidate>();
         }
     }
 }

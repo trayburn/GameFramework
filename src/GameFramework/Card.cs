@@ -24,7 +24,7 @@ namespace GameFramework
             }
             set
             {
-                if (!game.Suits.Contains(value)) throw new ArgumentException("Suit must be valid for the game.");
+                if (!SuitIsValid(value)) throw new ArgumentException("Suit must be valid for the game.");
                 _suit = value;
             }
         }
@@ -38,7 +38,7 @@ namespace GameFramework
             }
             set
             {
-                if (!game.Values.Contains(value)) throw new ArgumentException("Value must be valid for the game.");
+                if (!ValueIsValid(value)) throw new ArgumentException("Value must be valid for the game.");
                 _value = value;
             }
         }
@@ -46,6 +46,21 @@ namespace GameFramework
         public int CompareTo(ICard other)
         {
             return game.Compare(this, other);
+        }
+
+        private bool ValueIsValid(string suit)
+        {
+            return game.Values.Contains(suit);
+        }
+
+        private bool SuitIsValid(string value)
+        {
+            return game.Suits.Contains(value);
+        }
+
+        public bool Validate()
+        {
+            return ValueIsValid(this.Value) && SuitIsValid(this.Suit);
         }
     }
 }
