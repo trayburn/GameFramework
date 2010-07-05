@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace GameFramework.Test
+namespace GameFramework.Test.Framework
 {
     public abstract class BaseTest
     {

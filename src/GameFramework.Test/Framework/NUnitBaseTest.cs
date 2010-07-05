@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using Rhino.Mocks;
 
-namespace GameFramework.Test
+namespace GameFramework.Test.Framework
 {
-    [TestFixture]
     public abstract class NUnitBaseTest : BaseTest
     {
         [TestFixtureSetUp]

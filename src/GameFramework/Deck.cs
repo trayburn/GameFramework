@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameFramework
 {
-    public class Deck<T> : List<T>
+    public class Deck : List<ICard>
     {
     }
 }
