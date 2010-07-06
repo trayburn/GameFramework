@@ -5,16 +5,26 @@ using System.Text;
 using NUnit.Framework;
 using GameFramework.Test.Framework;
 using Rhino.Mocks;
+using System.Collections.Specialized;
 
 namespace GameFramework.Test
 {
     [TestFixture]
     public class DeckTest : MockingBaseTest
     {
+        private Deck deck;
+        private static int HitTest;
+
+        public override void BeforeEachTest()
+        {
+            base.BeforeEachTest();
+            deck = new Deck(Mock<IGame>());
+            DeckTest.HitTest = 0;
+        }
+
         [Test]
         public void ShouldBeAbleToAddCards()
         {
-            var deck = new Deck(Mock<IGame>());
             deck.Add(Mock<ICard>());
             deck.Count().ShouldBe(1);
         }
@@ -22,7 +32,6 @@ namespace GameFramework.Test
         [Test]
         public void ShouldBeAStronglyTypedCollectionOfICard()
         {
-            var deck = new Deck(Mock<IGame>());
             deck.Add(Mock<ICard>());
             deck[0].ShouldBeOfType<ICard>();
         }
@@ -30,15 +39,61 @@ namespace GameFramework.Test
         [Test]
         public void ShouldBeAbleToCheckValidity()
         {
-            var deck = new Deck(Mock<IGame>());
             deck.Validate().ShouldBeTrue();
         }
 
         [Test]
         public void ShouldImplementIValidate()
         {
-            var deck = new Deck(Mock<IGame>());
             deck.ShouldBeOfType<IValidate>();
+        }
+
+        [Test]
+        public void ShouldImplementINotifyCollectionChanged()
+        {
+            deck.ShouldBeOfType<INotifyCollectionChanged>();
+        }
+
+        [Test]
+        public void ShouldRaiseAnEventWhenCollectionHasChanged()
+        {
+            deck.CollectionChanged += (s, e) => ++DeckTest.HitTest;
+
+            deck.Add(Mock<ICard>());
+
+            DeckTest.HitTest.ShouldBe(1);
+        }
+
+        [Test]
+        public void ShouldBeAbleToDrawAHandOfMultipleCards()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                deck.Add(Mock<ICard>());
+            }
+
+            deck.Count.ShouldBe(10);
+
+            var hand = deck.Draw(5);
+
+            hand.Count().ShouldBe(5);
+            deck.Count.ShouldBe(5);
+        }
+
+        [Test]
+        public void ShouldBeAbleToDrawAHandOfOneCard()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                deck.Add(Mock<ICard>());
+            }
+
+            deck.Count.ShouldBe(10);
+
+            var hand = deck.Draw();
+
+            hand.ShouldBeOfType<ICard>();
+            deck.Count.ShouldBe(9);
         }
     }
 }

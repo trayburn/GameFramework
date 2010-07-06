@@ -2,18 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace GameFramework
 {
-    public class Deck : ICollection<ICard>, IValidate
+    public class Deck : ICollection<ICard>, IValidate, INotifyCollectionChanged
     {
-        private List<ICard> list;
+        private ObservableCollection<ICard> list;
         private IGame game;
 
         public Deck(IGame game)
         {
-            list = new List<ICard>();
+            list = new ObservableCollection<ICard>();
+            list.CollectionChanged += (s, e) => this.CollectionChanged(s, e);
             this.game = game;
+        }
+
+        public IEnumerable<ICard> Draw(int handSize)
+        {
+            var hand = new ObservableCollection<ICard>();
+            for (int i = 0; i < handSize; i++)
+            {
+                hand.Add(this[0]);
+                (list as IList<ICard>).RemoveAt(0);
+            }
+
+            return hand;
+        }
+
+        public ICard Draw()
+        {
+            return Draw(1).First();
         }
 
         public ICard this[int index]
@@ -77,5 +98,7 @@ namespace GameFramework
         {
             return list.Remove(item);
         }
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged = delegate { };
     }
 }
