@@ -12,4 +12,16 @@ namespace GameFramework
             return game.GetName(card.Suit, card.Value);
         }
     }
+
+    public static class IEnumerableExtensions
+    {
+        public static IEnumerable<T> Do<T>(this IEnumerable<T> self, Action<T> action)
+        {
+            foreach (var item in self)
+            {
+                action.Invoke(item);
+            }
+            return self;
+        }
+    }
 }

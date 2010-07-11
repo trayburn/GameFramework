@@ -77,5 +77,13 @@ namespace GameFramework
         {
             return Values.IndexOf(x.Value).CompareTo(Values.IndexOf(y.Value));
         }
+
+        public IDeck CreateDeck(bool populateDeck = true)
+        {
+            Deck deck = new Deck(this);
+            if (populateDeck)
+                this.Suits.Do(s => this.Values.Do(v => deck.Add(new Card(this) { Suit = s, Value = v })));
+            return deck;
+        }
     }
 }

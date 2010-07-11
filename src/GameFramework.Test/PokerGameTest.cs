@@ -76,5 +76,26 @@ namespace GameFramework.Test
             var card2 = new Card(game) { Suit = "Spades", Value = "Five" };
             game.Compare(card1, card2).ShouldBe(-1);
         }
+
+        [Test]
+        public void ShouldCreateADeckBasedOnItsGame()
+        {
+            var deck = game.CreateDeck();
+            deck.Game.ShouldBe(game);
+        }
+
+        [Test]
+        public void ShouldCreateADeckWithFiftyTwoCards()
+        {
+            var deck = game.CreateDeck();
+            deck.Count.ShouldBe(52);
+        }
+
+        [Test]
+        public void ShouldOptionallyCreateAnEmptyDeck()
+        {
+            var deck = game.CreateDeck(false);
+            deck.Count.ShouldBe(0);
+        }
     }
 }

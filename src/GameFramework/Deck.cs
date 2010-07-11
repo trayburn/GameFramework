@@ -8,17 +8,18 @@ using System.Collections.ObjectModel;
 
 namespace GameFramework
 {
-    public class Deck : ICollection<ICard>, IValidate, INotifyCollectionChanged
+    public class Deck : IDeck
     {
         private ObservableCollection<ICard> list;
-        private IGame game;
 
         public Deck(IGame game)
         {
             list = new ObservableCollection<ICard>();
             list.CollectionChanged += (s, e) => this.CollectionChanged(s, e);
-            this.game = game;
+            this.Game = game;
         }
+
+        public IGame Game { get; private set; }
 
         public IEnumerable<ICard> Draw(int handSize)
         {

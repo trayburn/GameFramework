@@ -23,5 +23,10 @@ namespace GameFramework.Test.Framework
         {
             Assert.IsTrue(self);
         }
+
+        public static void ShouldNotBeNull(this object self)
+        {
+            Assert.IsNotNull(self);
+        }
     }
 }
