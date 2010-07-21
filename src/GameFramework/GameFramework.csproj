@@ -49,6 +49,7 @@
     <Compile Include="IValidate.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PokerGame.cs" />
+    <Compile Include="PokerHandComparer.cs" />
     <Compile Include="PokerRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

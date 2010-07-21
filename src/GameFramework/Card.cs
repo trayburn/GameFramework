@@ -13,7 +13,7 @@ namespace GameFramework
         {
             this.game = game;
         }
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         private string _suit;
         public string Suit

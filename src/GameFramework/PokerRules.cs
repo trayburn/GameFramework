@@ -6,25 +6,23 @@ using System.Diagnostics;
 
 namespace GameFramework
 {
-    public class PokerHandComparer : IComparer<IEnumerable<ICard>>
-    {
-        public int Compare(IEnumerable<ICard> x, IEnumerable<ICard> y)
-        {
-            throw new NotImplementedException();
-        }
-    }
     public class PokerRules : IComparer<IEnumerable<ICard>>
     {
-        public PokerRules() : this(new PokerGame(), new PokerHandComparer())
+        public PokerRules() : this(new PokerGame())
         {
         }
 
-        public PokerRules(PokerGame _game, IComparer<IEnumerable<ICard>> comparer)
+        private PokerRules(PokerGame game)
+            : this(game, new PokerHandComparer(game))
         {
-            this._game = _game;
+        }
+
+        public PokerRules(PokerGame game, IComparer<IEnumerable<ICard>> comparer)
+        {
+            this._game = game;
             Comparer = comparer;
-            Deck = _game.CreateDeck();
-            DiscardDeck = _game.CreateDeck(false);
+            Deck = game.CreateDeck();
+            DiscardDeck = game.CreateDeck(false);
         }
 
         private PokerGame _game;

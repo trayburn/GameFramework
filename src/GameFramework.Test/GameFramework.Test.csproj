@@ -54,6 +54,7 @@
     <Compile Include="Framework\MockingBaseTest.cs" />
     <Compile Include="Framework\NUnitBaseTest.cs" />
     <Compile Include="PokerGameTest.cs" />
+    <Compile Include="PokerHandComparerTest.cs" />
     <Compile Include="PokerRulesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\ShouldExtensions.cs" />
